@@ -3,7 +3,6 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const ejs = require("ejs");
-const _ = require("lodash");
 const mongoose = require("mongoose");
 const user = require(__dirname+"/user.js");
 let port = process.env.PORT;
@@ -150,6 +149,7 @@ app.post("/delete", function(req, res){
   Post.findByIdAndDelete({_id: postId}, function(err){
     if(err){
       console.log("DeletePostRoute - There was an error while deleting the post: ");
+      console.log(err);
     } else{
       console.log("DeletePostRoute - Post was deleted successfully");
       res.redirect("/");
